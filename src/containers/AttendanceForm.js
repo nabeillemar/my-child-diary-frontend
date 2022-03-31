@@ -58,7 +58,7 @@ class AttendanceForm extends Component {
           <input type='text' placeholder="check out time" value={this.state.check_out} name="check_out" onChange={this.handleChange}/><br/>
           <br></br>
           <label> Child Name
-          <select value={this.state.child_id} onChange={this.handleChange}>
+          <select name="child_id" value={this.state.child_id} onChange={this.handleChange}>
             {this.props.children.map((child, i) => (
             <option key={i} value={child.id}>{child.attributes.child_name}</option>
             ))}

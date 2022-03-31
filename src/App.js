@@ -18,7 +18,8 @@ function App() {
       <Route exact path='/' element={<Home/>} />
       <Route exact path='/children' element={<Child/>} />
       <Route exact path='/attendance' element={<Attendance/>}/>
-      <Route path="children/:id" component={<ChildrenAttendance/>}/>
+      <Route path="children/:id" element={<ChildrenAttendance/>}/>
+
       </Routes>
     </div>
     </Router>
