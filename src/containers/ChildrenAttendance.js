@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { getChildren } from '../actions/children'
 import Child from '../components/Child'
 import ChildContainer from '../containers/ChildContainer';
-import { Childrendata } from '../containers/Childrendata'
+import Childrendata  from '../containers/Childrendata'
 
 
 // this is the meals inside the given category 
@@ -19,10 +19,10 @@ import { Childrendata } from '../containers/Childrendata'
   function ChildrenAttendance(props) {
       //debugger
      const { id } = useParams()
-     const child = Childrendata.map.filter(el => el.id === id)
+     const child = Childrendata
     
     return (
-        <ChildContainer id={props.id}/>
+        <p>{Childrendata}</p>
     );
   }
 
