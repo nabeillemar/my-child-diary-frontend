@@ -77,7 +77,7 @@ class AttendanceForm extends Component {
 
 
 const mapStateToProps = state => {
-  debugger
+  //debugger
   console.log("maptoStateProp in attendance form")
   //debugger
   return{

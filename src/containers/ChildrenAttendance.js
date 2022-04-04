@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
+import  { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getChildren } from '../actions/children'
 import Child from '../components/Child'
+import ChildContainer from '../containers/ChildContainer';
+import { Childrendata } from '../containers/Childrendata'
 
 
 // this is the meals inside the given category 
@@ -9,15 +14,33 @@ import Child from '../components/Child'
 
 // after the click it goes here and renders all the meals for that meal, Meal Container gets actived here 
 
+
+
+  function ChildrenAttendance(props) {
+      //debugger
+     const { id } = useParams()
+     const child = Childrendata
+    return (
+        <ChildContainer id={props.id}/>
+    );
+  }
+
+  export default ChildrenAttendance
+
+
+
+
+/*
 class ChildrenAttendance extends Component {
+
+
     render() {
+
         debugger
-        
         return (
             <div>
                 <h2>The children With</h2>
                 <h1>{this.props.name}</h1>
-
 
             </div>
         )
@@ -26,3 +49,5 @@ class ChildrenAttendance extends Component {
 
 
 export default ChildrenAttendance
+
+*/

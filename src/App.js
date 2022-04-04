@@ -16,9 +16,9 @@ function App() {
     <div className="App">
       <Routes>
       <Route exact path='/' element={<Home/>} />
-      <Route exact path='/children' element={<Child/>} />
-      <Route exact path='/attendance' element={<Attendance/>}/>
-      <Route path="children/:id" element={<ChildrenAttendance/>}/>
+      <Route exact path='/children' element={<Child />} />
+      <Route exact path='/attendance' element={<Attendance />}/>
+      <Route path="children/:id" element={<ChildrenAttendance />}/> {/* when Children/:id gets called it renders the ChildrenAttendance page   */}
 
       </Routes>
     </div>
@@ -27,3 +27,6 @@ function App() {
 }
 
 export default App;
+
+
+//Has all the routes 
