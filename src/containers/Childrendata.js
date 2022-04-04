@@ -5,12 +5,9 @@ import { connect } from 'react-redux';
 
 
 function Childrendata(props) {
-console.log(props.children)
 debugger
-
-
   return (
-    <div>children data</div>
+    console.log(props.children)
   )
 }
 

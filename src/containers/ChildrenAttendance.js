@@ -19,7 +19,8 @@ import { Childrendata } from '../containers/Childrendata'
   function ChildrenAttendance(props) {
       //debugger
      const { id } = useParams()
-     const child = Childrendata
+     const child = Childrendata.map.filter(el => el.id === id)
+    
     return (
         <ChildContainer id={props.id}/>
     );
