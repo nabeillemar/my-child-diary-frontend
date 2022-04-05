@@ -6,6 +6,7 @@ import { getAttendances } from '../actions/attendances'
 import Child from '../components/Child'
 import ChildContainer from '../containers/ChildContainer';
 import Childrendata  from '../containers/Childrendata'
+import AttendanceContainer from './AttendanceContainer';
 
 
 // this is the meals inside the given category 
@@ -33,13 +34,11 @@ import Childrendata  from '../containers/Childrendata'
         <p>id - {id}</p>
         <p>{child.attributes.child_name}</p>
         <p>{child.attributes.age}</p>
+        <AttendanceContainer />
 
     </div>
     );
   }
-
-
-
 
 
   const mapStateToProps = state => {
