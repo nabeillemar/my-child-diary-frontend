@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import  { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getChildren } from '../actions/children'
+import { getAttendances } from '../actions/attendances'
 import Child from '../components/Child'
 import ChildContainer from '../containers/ChildContainer';
 import Childrendata  from '../containers/Childrendata'
@@ -19,14 +20,39 @@ import Childrendata  from '../containers/Childrendata'
   function ChildrenAttendance(props) {
       //debugger
      const { id } = useParams()
-     const child = Childrendata
+    // debugger
+     //const child = Childrendata
+     const child = props.children.filter(child => child.id === id)[0]
+     //    debugger
+     console.log(props.children.filter(child => child.id === id))
+     const attendance = props.attendances.filter(attendance => attendance.child_id === id)[0]
+     debugger
     
     return (
-        <p>{Childrendata}</p>
+        <div>
+        <p>id - {id}</p>
+        <p>{child.attributes.child_name}</p>
+        <p>{child.attributes.age}</p>
+
+    </div>
     );
   }
 
-  export default ChildrenAttendance
+
+
+
+
+  const mapStateToProps = state => {
+    console.log("maptoStateProp in ChildrenAttendance")
+    debugger
+    return{
+      children: state.childReducer.children, //should this be children.data, data does come across but it should be state.childReducer.children.data
+      attendances: state.attendanceReducer.attendances,
+    }
+  }
+
+
+export default connect(mapStateToProps, {getChildren, getAttendances})(ChildrenAttendance);
 
 
 

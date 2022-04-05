@@ -51,10 +51,19 @@ class Attendance extends Component {
 }
 
 
+
+
+
+
+
+
+
+
+
 const mapStateToProps = state => {
     //debugger
     console.log("maptoStateProp in Attendance")
-    //debugger
+    debugger
     return{
       attendances: state.attendanceReducer.attendances, //should this be attendances.data, data does come across but it should be state.attendanceReducer.attendances.data
       loading: state.attendanceReducer.loading
