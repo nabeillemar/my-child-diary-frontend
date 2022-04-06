@@ -1,6 +1,7 @@
 import React from 'react'
 
 const AttendanceContainer = (props) => {
+    //debugger
     return (
         <div>
         <h3>date: {props.date}</h3> 

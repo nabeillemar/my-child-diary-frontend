@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import  { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getChildren } from '../actions/children'
@@ -19,6 +19,7 @@ import AttendanceContainer from './AttendanceContainer';
 
 
   function ChildrenAttendance(props) {
+    let [attendanceRecord, setattendanceRecord] = useState(null)
       //debugger
      const { id } = useParams()
     // debugger
@@ -26,15 +27,28 @@ import AttendanceContainer from './AttendanceContainer';
      const child = props.children.filter(child => child.id === id)[0]
      //    debugger
      console.log(props.children.filter(child => child.id === id))
-     const attendance = props.attendances.filter(attendance => attendance.child_id === id)[0]
-     debugger
+     //const attendance = props.attendance.filter(attendance => attendance.child_id === id)[0]
+     //debugger
+      //const attendance = data.data.map(attendance => attendance.attributes.child_id == id)
+
+    //const attendance = data.data.filter(attendance => attendance.attributes.child_id == id) 
+     //useeffect 
+     useEffect(() => {
+      fetch("http://localhost:3001/api/v1/attendances")
+      .then(response => response.json())
+      .then(data => {
+        debugger
+        setattendanceRecord(data)})
+    },[])
+  
+
     
     return (
         <div>
         <p>id - {id}</p>
         <p>{child.attributes.child_name}</p>
         <p>{child.attributes.age}</p>
-        <AttendanceContainer />
+        <ul>{attendanceRecord.filter(attendance => attendance.attributes.child_id == id)}</ul>
 
     </div>
     );
@@ -43,7 +57,7 @@ import AttendanceContainer from './AttendanceContainer';
 
   const mapStateToProps = state => {
     console.log("maptoStateProp in ChildrenAttendance")
-    debugger
+    //debugger
     return{
       children: state.childReducer.children, //should this be children.data, data does come across but it should be state.childReducer.children.data
       attendances: state.attendanceReducer.attendances,
@@ -77,3 +91,6 @@ class ChildrenAttendance extends Component {
 export default ChildrenAttendance
 
 */
+
+
+//http://localhost:3001/api/v1/children/1/attendances
