@@ -19,8 +19,8 @@ import AttendanceContainer from './AttendanceContainer';
 
 
   function ChildrenAttendance(props) {
-    let [attendanceRecord, setattendanceRecord] = useState(null)
-      //debugger
+    let [attendanceRecord, setattendanceRecord] = useState([])
+      debugger
      const { id } = useParams()
     // debugger
      //const child = Childrendata
@@ -33,6 +33,7 @@ import AttendanceContainer from './AttendanceContainer';
 
     //const attendance = data.data.filter(attendance => attendance.attributes.child_id == id) 
      //useeffect 
+
      useEffect(() => {
       fetch("http://localhost:3001/api/v1/attendances")
       .then(response => response.json())
@@ -40,7 +41,23 @@ import AttendanceContainer from './AttendanceContainer';
         debugger
         setattendanceRecord(data)})
     },[])
+
+   //const data = Array.from(attendanceRecord.data)
   
+   const attendance = attendanceRecord.filter(attendance => attendance.attributes.child_id == id) //get a new array with the correct child_id
+
+   const attendances = attendance.data.map((attendance, i) => { return < AttendanceContainer 
+    key={i} 
+    date={attendance.attributes.date} 
+    check_in={attendance.attributes.check_in} 
+    check_out={attendance.attributes.check_out} 
+    lunch={attendance.attributes.lunch} 
+    snack={attendance.attributes.snack} 
+    bathroom={attendance.attributes.bathroom}
+    day_summary={attendance.attributes.day_summary}
+    id={attendance.id}
+    child_id={attendance.attributes.child_id}/>
+  })
 
     
     return (
@@ -48,12 +65,15 @@ import AttendanceContainer from './AttendanceContainer';
         <p>id - {id}</p>
         <p>{child.attributes.child_name}</p>
         <p>{child.attributes.age}</p>
-        <ul>{attendanceRecord.filter(attendance => attendance.attributes.child_id == id)}</ul>
+        <h3>attendances List</h3>
+          {attendances}
+       </div> 
 
-    </div>
+
     );
   }
 
+  //<ul>{attendanceRecord.filter(attendance => attendance.attributes.child_id == id)}</ul>
 
   const mapStateToProps = state => {
     console.log("maptoStateProp in ChildrenAttendance")
