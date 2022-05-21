@@ -1,11 +1,12 @@
-
-export const getChildren = () => {
+//These are my action creators that returns actions 
+export const getChildren = () => { 
+    console.log("getChildren Action Creator is called")
     return (dispatch) => {  
-        dispatch({type: "LOADING_CHILDREN"})
+        dispatch({type: "LOADING_CHILDREN"}) //when we use dispatch we have to invoke it with an action 
         fetch('api/v1/children') 
         .then(res => res.json())
-        .then(children =>  dispatch({type: "CHILDREN_LOADED", payload: children}))
-     
+        .then(children =>  dispatch({type: "CHILDREN_LOADED", payload: children})) //when we use dispatch we have to invoke it with an action, here it is carrying a payload 
+        // the payload is carrying our data from our fetch request from this action to the reducer 
     }
 }
 
@@ -27,6 +28,32 @@ export const addChildren = (child) => {
 }
 
 
+
+
+export const editChildren = (child) => {
+    debugger
+  return (dispatch) => {
+      fetch(`api/v1/children/${child.id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify(child)
+    })
+    .then(response => response.json())
+    .then(children => dispatch({type: 'CHILDREN_EDITED', payload: children}))
+  }
+
+}
+
+
+
+
+
+
+
+
 export const deleteChildren = (id) => {
     //debugger
     return (dispatch) => {
@@ -39,14 +66,5 @@ export const deleteChildren = (id) => {
         })
         .then(() => dispatch({type: "CHILDREN_DELETED", payload: id}))
 }
-
 }
-
-//should this be children.data
-
-
-// issue is that State is not connected 
-// seems like Action is 
-// is it because of my nested data structure? not sure 
-
 

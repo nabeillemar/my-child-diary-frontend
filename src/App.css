@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  font-family: Verdana, sans-serif;
+}
+
+body {
+  background-color:rgb(255, 176, 97);
+
+}
+
+
+#childform {
+  text-align: center;
 }
 
 .App-logo {
@@ -7,11 +18,36 @@
   pointer-events: none;
 }
 
+#childspecific {
+  text-align: center;
+}
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.deleteChild {
+  margin-left: 8%;
+}
+
+.block {
+  width: 50%;
+  border: none;
+  background-color: #04aaa5aa;
+  padding: 20px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  border-style: double;
+  margin-right: 5%;
+
+
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -35,4 +71,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #FFDEAD;
+  border-style: double;
 }

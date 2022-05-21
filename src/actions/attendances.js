@@ -25,3 +25,18 @@ export const addAttendances = (attendance) => {
     }
 
 }
+
+
+export const deleteAttendance = (id) => {
+    debugger
+    return (dispatch) => {
+        dispatch({type: "DELETEING_ATTENDANCES" })
+        fetch(`api/v1/attendances/${id}`, {
+            method: "DELETE",
+            headers: {
+                "content-Type" : "application/json"
+            }
+        })
+        .then(() => dispatch({type: "ATTENDANCES_DELETED", payload: id}))
+}
+}

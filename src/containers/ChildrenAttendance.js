@@ -3,9 +3,9 @@ import  { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getChildren } from '../actions/children'
 import { getAttendances } from '../actions/attendances'
-import Child from '../components/Child'
-import ChildContainer from '../containers/ChildContainer';
-import Childrendata  from '../containers/Childrendata'
+//import Child from '../components/Child'
+//import ChildContainer from '../containers/ChildContainer';
+//import Childrendata  from '../containers/Childrendata'
 import AttendanceContainer from './AttendanceContainer';
 
 
@@ -20,33 +20,29 @@ import AttendanceContainer from './AttendanceContainer';
 
   function ChildrenAttendance(props) {
     let [attendanceRecord, setattendanceRecord] = useState([])
-      debugger
+      //debugger
      const { id } = useParams()
     // debugger
-     //const child = Childrendata
      const child = props.children.filter(child => child.id === id)[0]
      //    debugger
+     // we would copy this part but instead of looking for the children we would look for attendance date, compare the attendance date from the first page to the attendance page of the last page 
+     //what would the url looklike 04152022 woulkd 
      console.log(props.children.filter(child => child.id === id))
-     //const attendance = props.attendance.filter(attendance => attendance.child_id === id)[0]
-     //debugger
-      //const attendance = data.data.map(attendance => attendance.attributes.child_id == id)
-
-    //const attendance = data.data.filter(attendance => attendance.attributes.child_id == id) 
-     //useeffect 
 
      useEffect(() => {
       fetch("http://localhost:3001/api/v1/attendances")
       .then(response => response.json())
       .then(data => {
         debugger
-        setattendanceRecord(data)})
+        console.log(data)
+        setattendanceRecord(data.data)})
     },[])
 
-   //const data = Array.from(attendanceRecord.data)
-  
-   const attendance = attendanceRecord.filter(attendance => attendance.attributes.child_id == id) //get a new array with the correct child_id
+  const attendance = attendanceRecord.filter(attendance => attendance.attributes.child_id == id)
 
-   const attendances = attendance.data.map((attendance, i) => { return < AttendanceContainer 
+
+   
+   const attendances = attendance.map((attendance, i) => { return < AttendanceContainer 
     key={i} 
     date={attendance.attributes.date} 
     check_in={attendance.attributes.check_in} 
@@ -56,24 +52,26 @@ import AttendanceContainer from './AttendanceContainer';
     bathroom={attendance.attributes.bathroom}
     day_summary={attendance.attributes.day_summary}
     id={attendance.id}
-    child_id={attendance.attributes.child_id}/>
+    child_id={attendance.attributes.child_id}
+    child_name={attendance.attributes.child.child_name}/>
   })
-
     
     return (
-        <div>
-        <p>id - {id}</p>
-        <p>{child.attributes.child_name}</p>
-        <p>{child.attributes.age}</p>
-        <h3>attendances List</h3>
-          {attendances}
+        <div id="childspecific">
+        <p>Child Name: {child.attributes.child_name}</p>
+        <p>Child Age: {child.attributes.age}</p>
+        <p>Child Allergies: {child.attributes.allergies}</p>
+        <p>Child's Guardian: {child.attributes.guardian_name}</p>
+        <p>Home Address: {child.attributes.home_address}</p>
+        <p>Phone Number: {child.attributes.phone_number}</p>
+        <br/>
+        <h3>Attendances List</h3>
+         {attendances}
        </div> 
 
 
     );
   }
-
-  //<ul>{attendanceRecord.filter(attendance => attendance.attributes.child_id == id)}</ul>
 
   const mapStateToProps = state => {
     console.log("maptoStateProp in ChildrenAttendance")
@@ -89,28 +87,3 @@ export default connect(mapStateToProps, {getChildren, getAttendances})(ChildrenA
 
 
 
-
-/*
-class ChildrenAttendance extends Component {
-
-
-    render() {
-
-        debugger
-        return (
-            <div>
-                <h2>The children With</h2>
-                <h1>{this.props.name}</h1>
-
-            </div>
-        )
-    }
-}
-
-
-export default ChildrenAttendance
-
-*/
-
-
-//http://localhost:3001/api/v1/children/1/attendances

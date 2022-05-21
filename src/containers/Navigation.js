@@ -3,11 +3,12 @@ import { NavLink } from 'react-router-dom'
 
 const linkStyle = {
     width: '100px',
-    padding: '12px',
-    margin: '0 6px 6px',
-    background: 'blue',
+    padding: '20px 20px 20px 20px',
+    margin: ' 6px 6px',
+    background: 'rgb(255, 136, 97)',
     textDecoration: 'none',
-    color: 'white'
+    color: 'white', 
+    borderStyle: "double"
 }
 
 const Navigation = () =>
@@ -38,6 +39,15 @@ const Navigation = () =>
                     background: 'darkblue'
                 }}
             >Attendance</NavLink>
+
+            <NavLink 
+                to='/childform'
+                exact
+                style={linkStyle}
+                activeStyle={{
+                    background: 'darkblue'
+                }}
+            >Child Form</NavLink>
 
 
         </div>

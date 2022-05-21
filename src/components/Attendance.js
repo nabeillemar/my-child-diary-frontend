@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { getAttendances } from '../actions/attendances'
+import { getAttendances, deleteAttendance } from '../actions/attendances'
 import AttendanceContainer from '../containers/AttendanceContainer';
 import AttendanceForm from '../containers/AttendanceForm';
 
@@ -13,7 +13,7 @@ class Attendance extends Component {
     }
 
     handleOnClick = (event) => {
-      this.props.deleteattendances(event.target.id)
+      this.props.deleteAttendance(event.target.id)
     }
 
 
@@ -30,7 +30,8 @@ class Attendance extends Component {
         day_summary={attendance.attributes.day_summary}
         id={attendance.id}
         child_id={attendance.attributes.child_id}
-        handleClick={this.handleOnClick}/>
+       child_name={attendance.attributes.child.child_name}
+       handleClick={this.handleOnClick}/>
       })
 
 
@@ -38,10 +39,10 @@ class Attendance extends Component {
     console.log("return in attendance.js")
     return (
       <div>
-        <h3>Add attendance Below</h3>
+        <h1>Add attendance Below</h1>
         <AttendanceForm/>
         <br></br>
-        <h3>attendances List</h3>
+        <h2>Attendances List</h2>
           {attendances}
           {/*<ul>{this.props.loading ? <h3>Loading...</h3> : attendances}</ul>*/}
 
@@ -51,23 +52,14 @@ class Attendance extends Component {
 }
 
 
-
-
-
-
-
-
-
-
-
 const mapStateToProps = state => {
     //debugger
     console.log("maptoStateProp in Attendance")
-    debugger
+    //debugger
     return{
       attendances: state.attendanceReducer.attendances, //should this be attendances.data, data does come across but it should be state.attendanceReducer.attendances.data
       loading: state.attendanceReducer.loading
     }
   }
 
-export default connect(mapStateToProps, { getAttendances })(Attendance);
+export default connect(mapStateToProps, { getAttendances, deleteAttendance })(Attendance);

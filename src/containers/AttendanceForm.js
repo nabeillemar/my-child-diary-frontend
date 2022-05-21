@@ -13,6 +13,7 @@ class AttendanceForm extends Component {
             snack: "",
             bathroom: "",
             child_id: "",
+            day_summary: "",
             loading: false 
     }
 
@@ -33,6 +34,7 @@ class AttendanceForm extends Component {
             snack: "",
             bathroom: "",
             child_id: "",
+            day_summary: "",
             loading: false 
         })
       }
@@ -51,11 +53,23 @@ class AttendanceForm extends Component {
           <label>Attendance Date: </label>
           <input type='text' placeholder="Attendance's Date" value={this.state.date} name="date" onChange={this.handleChange}/><br/>
           <br></br>
-          <label>Attendance check in: </label>
+          <label>Check In Time: </label>
           <input type='text' placeholder="check in time" value={this.state.check_in} name="check_in" onChange={this.handleChange}/><br/>
           <br></br>
-          <label>check_out: </label>
+          <label>Check Out Time: </label>
           <input type='text' placeholder="check out time" value={this.state.check_out} name="check_out" onChange={this.handleChange}/><br/>
+          <br></br>
+          <label>Lunch: </label>
+          <input type='text' placeholder="Lunch" value={this.state.lunch} name="lunch" onChange={this.handleChange}/><br/>
+          <br></br>
+          <label>Snack: </label>
+          <input type='text' placeholder="Snack" value={this.state.snack} name="snack" onChange={this.handleChange}/><br/>
+          <br></br>
+          <label>Bathroom: </label>
+          <input type='text' placeholder="Bathroom" value={this.state.bathroom} name="bathroom" onChange={this.handleChange}/><br/>
+          <br></br>
+          <label>Day Summary: </label>
+          <textarea rows="5" cols="50" placeholder="Day Summary" value={this.state.day_summary} name="day_summary" onChange={this.handleChange}/><br/>
           <br></br>
           <label> Child Name
           <select name="child_id" value={this.state.child_id} onChange={this.handleChange}>

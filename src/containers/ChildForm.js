@@ -16,49 +16,12 @@ class ChildForm extends Component {
 
     handleChange = (event) => {
         this.setState({
-          [event.target.name]: event.target.value
+          [event.target.name]: event.target.value 
         })
       }
 
-   /* handleChange = (event) => {
-        this.setState({
-            child: {
-                child_name: event.target.value,
-                age: event.target.value, 
-                allergies: event.target.value,
-                guardian_name: event.target.value,
-                home_address: event.target.value,
-                phone_number: event.target.value
-            },
-        })
-
-    }
-
-    */
-
-    /*
     handleSubmit = (event) => {
-        event.preventDefault()
-        //const child = {child_name: this.state.child_name, age: this.state.age, allergies: this.state.allergies, guardian_name: this.state.guardian_name, home_address: this.state.home_address, phone_number: this.state.phone_number}
-        const child = Object.assign({}, this.state);
-        this.props.addChildren(child);
-        this.setState({
-            child: {
-                child_name: "",
-                age: "", 
-                allergies: "",
-                guardian_name: "",
-                home_address: "",
-                phone_number: ""
-            },
-            loading: false 
-        })
-        debugger
-    }
-    */
-
-    handleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault() 
         this.props.addChildren(this.state)
         this.setState({
             child_name: "",
@@ -72,10 +35,10 @@ class ChildForm extends Component {
       }
 
 
-
   render() {
     return (
-      <div>
+      <div id="childform">
+        <h1>Add Child's Information Below</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Child Name: </label>
           <input type='text' placeholder="Child's Name" value={this.state.child_name} name="child_name" onChange={this.handleChange}/><br/>
@@ -83,9 +46,19 @@ class ChildForm extends Component {
           <label>Child Age: </label>
           <input type='text' placeholder="Child's age" value={this.state.age} name="age" onChange={this.handleChange}/><br/>
           <br></br>
-          <label>allergies: </label>
-          <input type='text' placeholder="allergies" value={this.state.allergies} name="allergies" onChange={this.handleChange}/><br/>
+          <label>Allergies: </label>
+          <input type='text' placeholder="Child's allergies" value={this.state.allergies} name="allergies" onChange={this.handleChange}/><br/>
           <br></br>
+          <label>Guardian Name: </label>
+          <input type='text' placeholder="Child's guardian" value={this.state.guardian_name} name="guardian_name" onChange={this.handleChange}/><br/>
+          <br></br>
+          <label>Home Address: </label>
+          <input type='text' placeholder="Home Address" value={this.state.home_address} name="home_address" onChange={this.handleChange}/><br/>
+          <br></br>
+          <label>Phone Number: </label>
+          <input type='text' placeholder="Phone Number" value={this.state.phone_number} name="phone_number" onChange={this.handleChange}/><br/>
+          <br></br>
+          
           <input type="submit"/>
         </form>
       </div>

@@ -3,14 +3,28 @@ import { Link } from 'react-router-dom'
 
 const ChildContainer = (props) => {
     return (
-        <div>
-        <li><Link to={`/children/${props.id}`}>
-        <button>{props.child_name}</button>
-        </Link></li>
+        //<div class= "childCard">
+        <div class="row">
+            <div class="column">
+            <br></br>
+                <div class="card">
+            {console.log("ChildContainer component is called")}
+            <Link to={`/children/${props.id}`}>
+            <button type="button" class="block">{props.child_name}</button>
+            </Link>
+
+            <Link to={`/children/${props.id}/edit`}>
+            <button type="button">Edit</button>
+            </Link>
+
+            <button onClick={props.handleClick} id={props.id} class="deleteChild"> Delete </button>
+               </div>
+            </div>
         </div>
 
     )
 }
+
 
 
 

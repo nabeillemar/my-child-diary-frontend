@@ -7,6 +7,7 @@ const childReducer = (state = { children: [], loading: false}, action) => { // t
             loading: true
         }
 
+
         case "CHILDREN_LOADED":
             console.log("Loaded children")
             //debugger
@@ -15,7 +16,6 @@ const childReducer = (state = { children: [], loading: false}, action) => { // t
                 children: action.payload.data, // the payload is an array here 
                 loading: false 
             }
-
 
         case "ADDING_CHILDREN":
                 return {
@@ -41,7 +41,7 @@ const childReducer = (state = { children: [], loading: false}, action) => { // t
     
             }
     
-        case "CHILDREN_DELETED":
+        case "DELETEING_ATTENDANCES":
             //debugger
             return {
                 ...state,
@@ -51,7 +51,11 @@ const childReducer = (state = { children: [], loading: false}, action) => { // t
     
             }
 
-
+        case "CHILDREN_EDITED":
+            return {
+                ...state,
+                children:[...state.children.map(children => children.id === action.children.id ? action.children : children)]
+            }
 
 
 

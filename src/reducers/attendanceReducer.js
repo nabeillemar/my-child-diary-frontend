@@ -34,6 +34,25 @@ const attendanceReducer = (state = { attendances: [], loading: false}, action) =
     
     
             }
+            case "DELETING_CHILDREN":
+                return {
+                     ...state,
+                     loading: true
+        
+                }
+        
+            case "ATTENDANCES_DELETED":
+                //debugger
+                return {
+                    ...state,
+                    attendances: [...state.attendances.filter(attendance => `${attendance.id}` !== action.payload)],
+                    loading: false 
+        
+        
+                }
+
+
+
         default:
             return state
     }
