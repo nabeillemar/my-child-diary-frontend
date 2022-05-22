@@ -1,12 +1,12 @@
-//These are my action creators that returns actions 
+
 export const getChildren = () => { 
     console.log("getChildren Action Creator is called")
     return (dispatch) => {  
-        dispatch({type: "LOADING_CHILDREN"}) //when we use dispatch we have to invoke it with an action 
+        dispatch({type: "LOADING_CHILDREN"}) 
         fetch('api/v1/children') 
         .then(res => res.json())
-        .then(children =>  dispatch({type: "CHILDREN_LOADED", payload: children})) //when we use dispatch we have to invoke it with an action, here it is carrying a payload 
-        // the payload is carrying our data from our fetch request from this action to the reducer 
+        .then(children =>  dispatch({type: "CHILDREN_LOADED", payload: children})) 
+
     }
 }
 

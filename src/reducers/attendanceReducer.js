@@ -1,18 +1,18 @@
-const attendanceReducer = (state = { attendances: [], loading: false}, action) => { // this takes in the current state and the action which is the case 
+const attendanceReducer = (state = { attendances: [], loading: false}, action) => { 
     switch(action.type){
         case "LOADING_ATTENDANCES":
             console.log("loading attendances is called")
-           //debugger
+
             return {...state,
             loading: true
         }
 
         case "ATTENDANCES_LOADED":
             console.log("Loaded attendances")
-            //debugger
+
             return {
                 ...state,
-                attendances: action.payload.data, // the payload is an array here 
+                attendances: action.payload.data,
                 loading: false 
             }
 
@@ -42,7 +42,7 @@ const attendanceReducer = (state = { attendances: [], loading: false}, action) =
                 }
         
             case "ATTENDANCES_DELETED":
-                //debugger
+
                 return {
                     ...state,
                     attendances: [...state.attendances.filter(attendance => `${attendance.id}` !== action.payload)],

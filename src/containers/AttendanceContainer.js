@@ -1,7 +1,7 @@
 import React from 'react'
 
 const AttendanceContainer = (props) => {
-    //debugger
+
 
     return (
         <div class="row">
@@ -37,4 +37,3 @@ const AttendanceContainer = (props) => {
 
 export default AttendanceContainer
 
-//  <button onClick={props.handleClick} id={props.id} class="deleteAttendance"> Delete </button>

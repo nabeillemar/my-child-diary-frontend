@@ -17,11 +17,11 @@ function App() {
       <Navigation/>
     <div className="App">
       <Routes>
-      <Route exact path='/' element={<Home/>}  />{/* Home Page  */}
-      <Route exact path='/childform' element={<ChildForm/>}/> {/* Children page */}
-      <Route exact path='/children' element={<Child />} />{/* Children page */}
-      <Route exact path='/attendance' element={<Attendance />}/>{/* Attendance page */}
-      <Route path="children/:id" element={<ChildrenAttendance />}/> {/* Specific children page with attendance in it  */}
+      <Route exact path='/' element={<Home/>}  />
+      <Route exact path='/childform' element={<ChildForm/>}/> 
+      <Route exact path='/children' element={<Child />} />
+      <Route exact path='/attendance' element={<Attendance />}/>
+      <Route path="children/:id" element={<ChildrenAttendance />}/> 
       <Route path="children/:id/edit" element={<ChildEdit />}/> 
       </Routes>
     </div>
@@ -32,4 +32,3 @@ function App() {
 export default App;
 
 
-//Has all the routes 

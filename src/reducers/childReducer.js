@@ -1,8 +1,8 @@
-const childReducer = (state = { children: [], loading: false}, action) => { // this takes in the current state and the action which is the case 
+const childReducer = (state = { children: [], loading: false}, action) => { 
     switch(action.type){
         case "LOADING_CHILDREN":
             console.log("loading children is called")
-           //debugger
+
             return {...state,
             loading: true
         }
@@ -10,10 +10,10 @@ const childReducer = (state = { children: [], loading: false}, action) => { // t
 
         case "CHILDREN_LOADED":
             console.log("Loaded children")
-            //debugger
+
             return {
                 ...state,
-                children: action.payload.data, // the payload is an array here 
+                children: action.payload.data, 
                 loading: false 
             }
 
@@ -42,7 +42,7 @@ const childReducer = (state = { children: [], loading: false}, action) => { // t
             }
     
         case "DELETEING_ATTENDANCES":
-            //debugger
+   
             return {
                 ...state,
                 children: [...state.children.filter(child => `${child.id}` !== action.payload)],

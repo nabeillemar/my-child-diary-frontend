@@ -91,16 +91,12 @@ class AttendanceForm extends Component {
 
 
 const mapStateToProps = state => {
-  //debugger
   console.log("maptoStateProp in attendance form")
-  //debugger
   return{
-    children: state.childReducer.children, //should this be children.data, data does come across but it should be state.childReducer.children.data
+    children: state.childReducer.children,
     loading: state.childReducer.loading
   }
 }
 
 
 export default connect(mapStateToProps, {addAttendances, getChildren})(AttendanceForm)
-
-// do a mapSTATEtoProps... map children array from redux state to prop to this form

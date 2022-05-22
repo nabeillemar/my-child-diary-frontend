@@ -11,7 +11,6 @@ export const getAttendances = () => {
 
 export const addAttendances = (attendance) => {
     return (dispatch) => {
-        //debugger
         dispatch({type: "ADDING_ATTENDANCES" })
         fetch('api/v1/attendances', {
             method: "POST",

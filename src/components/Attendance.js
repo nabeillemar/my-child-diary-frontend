@@ -18,7 +18,6 @@ class Attendance extends Component {
 
 
   render() {
-      //debugger
       const attendances = this.props.attendances.map((attendance, i) => { return < AttendanceContainer 
         key={i} 
         date={attendance.attributes.date} 
@@ -35,16 +34,16 @@ class Attendance extends Component {
       })
 
 
-    //debugger
+
     console.log("return in attendance.js")
     return (
       <div>
-        <h1>Add attendance Below</h1>
+        <h1>Add Attendance Record Below</h1>
         <AttendanceForm/>
         <br></br>
         <h2>Attendances List</h2>
           {attendances}
-          {/*<ul>{this.props.loading ? <h3>Loading...</h3> : attendances}</ul>*/}
+
 
       </div>
     )
@@ -53,11 +52,9 @@ class Attendance extends Component {
 
 
 const mapStateToProps = state => {
-    //debugger
     console.log("maptoStateProp in Attendance")
-    //debugger
     return{
-      attendances: state.attendanceReducer.attendances, //should this be attendances.data, data does come across but it should be state.attendanceReducer.attendances.data
+      attendances: state.attendanceReducer.attendances, 
       loading: state.attendanceReducer.loading
     }
   }

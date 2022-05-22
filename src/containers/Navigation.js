@@ -40,17 +40,12 @@ const Navigation = () =>
                 }}
             >Attendance</NavLink>
 
-            <NavLink 
-                to='/childform'
-                exact
-                style={linkStyle}
-                activeStyle={{
-                    background: 'darkblue'
-                }}
-            >Child Form</NavLink>
+    
 
 
         </div>
 
 
 export default Navigation
+
+

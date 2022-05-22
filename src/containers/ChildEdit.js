@@ -1,5 +1,3 @@
-//import React, { useState, useEffect } from 'react'
-//import  { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getChildren } from '../actions/children'
 import React, { Component } from 'react'
@@ -8,7 +6,7 @@ import {editChildren} from '../actions/children'
 class ChildEdit extends Component {
 
     componentDidMount(){
-        //debugger
+
           console.log("calls on GetChildren, componentDIDMount")
           this.props.getChildren() 
       }
@@ -35,7 +33,6 @@ class ChildEdit extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
       debugger
-      //const Orgchild = children.filter(child => child.id === id)[0]
       debugger
       let child = {...this.state, id: this.props.children.id}
       debugger
@@ -88,48 +85,10 @@ class ChildEdit extends Component {
     console.log("maptoStateProp in ChildrenAttendance")
     debugger
     return {
-      children: state.childReducer.children, //should this be children.data, data does come across but it should be state.childReducer.children.data
+      children: state.childReducer.children, 
     }
   }
   
   
   export default connect(mapStateToProps, {getChildren, editChildren})(ChildEdit);
 
-  /*
-
-  function ChildEdit(props) {
-      //debugger
-     const { id } = useParams()
-    // debugger
-     const child = props.children.filter(child => child.id === id)[0]
-     //    debugger
-     console.log(props.children.filter(child => child.id === id))
-
-
-    return (
-        <div>
-        <p>Child id: {id}</p>
-        <p>Child Name: {child.attributes.child_name}</p>
-        <p>Child Age: {child.attributes.age}</p>
-        <p>Child allergies: {child.attributes.allergies}</p>
-        <p>Child's guardian: {child.attributes.guardian_name}</p>
-        <p>Home Address: {child.attributes.home_address}</p>
-        <p>Phone Number: {child.attributes.phone_number}</p>
-       </div> 
-
-
-    );
-  }
-
-  const mapStateToProps = state => {
-    console.log("maptoStateProp in ChildrenAttendance")
-    //debugger
-    return{
-      children: state.childReducer.children, //should this be children.data, data does come across but it should be state.childReducer.children.data
-    }
-  }
-
-
-export default connect(mapStateToProps, {getChildren})(ChildEdit);
-
-*/
